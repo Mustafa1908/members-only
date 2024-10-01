@@ -1,0 +1,14 @@
+user table
+id incrementing
+first name string 100
+last name 200
+password
+membership status
+
+
+message table
+
+id correspondant a l'id de l'user
+title 100
+message 700
+time 

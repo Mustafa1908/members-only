@@ -1,0 +1,10 @@
+const asyncHandler = require("express-async-handler");
+const { body, validationResult } = require("express-validator");
+
+let getHomePageGet = asyncHandler(async (req, res) => {
+  res.render("index");
+});
+
+module.exports = {
+  getHomePageGet,
+};
