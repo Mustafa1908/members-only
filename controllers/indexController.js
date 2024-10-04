@@ -65,13 +65,13 @@ let secretClubAdhesionPost = [
     .withMessage(`Incorrect secret code(The secret code is 30)`),
   asyncHandler(async (req, res) => {
     const errors = validationResult(req);
-    console.log(req.body);
     if (!errors.isEmpty()) {
       return res.status(400).render("secret_club_adhesion", {
         errors: errors.array(),
       });
     }
 
+    await db.updateUserMembership(req.user.username);
     res.render("secret_club");
   }),
 ];
@@ -90,7 +90,6 @@ let loginPagePost = asyncHandler(async (req, res, next) => {
 
     // Successful authentication
     req.logIn(user, async (err) => {
-      await db.updateUserMembership(req.body.username);
       res.redirect("/");
     });
   })(req, res, next);
