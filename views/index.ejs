@@ -8,9 +8,16 @@
   <body>
     <% if (locals.user) {%>
     <h1>WELCOME BACK <%= user.username %></h1>
-    <a href="/log-out">LOG OUT</a>
     <a href="/secret_club_adhesion">Join the club</a>
-    <% } else { %>
+    <a href="/new_message">New Message</a>
+    <a href="/log_out">LOG OUT</a>
+    <% } %> <% if(locals.user && locals.user.membership_status === true) {%> <%
+    if (allMessages) {%> <% for (let i = 0; i < allMessages.length; i++) { %>
+    <article>
+      <span><%= allMessages[i].username %></span>
+      <span><%= allMessages[i].time %></span>
+    </article>
+    <% } %> <% } %> <% } else {%>
     <a href="/sign_up">Sign up</a>
     <a href="/secret_club_adhesion">Join the club</a>
     <a href="/log_in">Log in</a>
