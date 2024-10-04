@@ -7,6 +7,13 @@ async function insertNewUser(user, hashedPassword) {
   );
 }
 
+async function updateUserMembership(username) {
+  await pool.query(
+    `UPDATE users SET membership_status = true WHERE username = '${username}'`
+  );
+}
+
 module.exports = {
   insertNewUser,
+  updateUserMembership,
 };
