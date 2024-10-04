@@ -13,5 +13,8 @@ router.get("/secret_club", indexController.getSecretClubPageGet);
 router.post("/secret_club_adhesion", indexController.secretClubAdhesionPost);
 router.get("/log_in", indexController.getLoginPageGet);
 router.post("/log_in", indexController.loginPagePost);
+router.get("/log_out", indexController.logOutGet);
+router.get("/new_message", indexController.getNewMessagePageGet);
+router.post("/new_message", indexController.addNewMessagePost);
 
 module.exports = router;
