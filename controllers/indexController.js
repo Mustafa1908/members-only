@@ -80,9 +80,20 @@ let getLoginPageGet = async (req, res) => {
   res.render("log_in");
 };
 
-let loginPagePost = passport.authenticate("local", {
-  successRedirect: "/",
-  failureRedirect: "/",
+let loginPagePost = asyncHandler(async (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    if (!user) {
+      // Handle failed authentication
+      console.log("an error occured");
+      return res.redirect("/");
+    }
+
+    // Successful authentication
+    req.logIn(user, async (err) => {
+      await db.updateUserMembership(req.body.username);
+      res.redirect("/");
+    });
+  })(req, res, next);
 });
 
 module.exports = {
