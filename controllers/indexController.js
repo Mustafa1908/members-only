@@ -5,7 +5,8 @@ const { body, validationResult } = require("express-validator");
 const passport = require("passport");
 
 let getHomePageGet = async (req, res) => {
-  res.render("index", { user: req.user });
+  let allMessages = await db.getAllMessages();
+  res.render("index", { user: req.user, allMessages: allMessages });
 };
 
 let getSignUpPageGet = async (req, res) => {
@@ -78,6 +79,7 @@ let secretClubAdhesionPost = [
 
 let getLoginPageGet = async (req, res) => {
   res.render("log_in");
+  console.log(res.locals);
 };
 
 let loginPagePost = asyncHandler(async (req, res, next) => {
@@ -95,6 +97,35 @@ let loginPagePost = asyncHandler(async (req, res, next) => {
   })(req, res, next);
 });
 
+let logOutGet = (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+};
+
+let getNewMessagePageGet = async (req, res) => {
+  if (res.locals.currentUser === undefined) {
+    console.log("You need to be connected to write a new message");
+    res.redirect("/");
+    return;
+  }
+  res.render("new_message");
+};
+
+let addNewMessagePost = asyncHandler(async (req, res, next) => {
+  let messageDate = new Date();
+
+  await db.createNewMessage(
+    res.locals.currentUser.username,
+    req.body,
+    messageDate
+  );
+  res.redirect("/");
+});
+
 module.exports = {
   getHomePageGet,
   getSignUpPageGet,
@@ -104,4 +135,7 @@ module.exports = {
   secretClubAdhesionPost,
   getLoginPageGet,
   loginPagePost,
+  logOutGet,
+  getNewMessagePageGet,
+  addNewMessagePost,
 };
