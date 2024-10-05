@@ -6,6 +6,8 @@ const session = require("express-session");
 const passport = require("passport");
 const app = express();
 const indexRouter = require("./routes/indexRouter");
+const authentifacationRouter = require("./routes/authentificationRouter");
+const joinClubRouter = require("./routes//joinClubRouter");
 const assetsPath = path.join(__dirname, "public");
 const passwordUtils = require("./utils/passwordUtils");
 
@@ -20,7 +22,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.urlencoded({ extended: false }));
-app.use("/", indexRouter);
+app.use("/", indexRouter, authentifacationRouter, joinClubRouter);
 
 passwordUtils.verifyUser();
 passwordUtils.serializeUser();
