@@ -28,6 +28,7 @@ let addNewMessagePost = asyncHandler(async (req, res, next) => {
 
 let deleteMessagePost = asyncHandler(async (req, res, next) => {
   await db.deleteMessage(req.body.messageTitle);
+
   res.redirect("/");
 });
 
