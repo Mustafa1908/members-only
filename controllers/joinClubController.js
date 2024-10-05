@@ -22,7 +22,7 @@ let secretClubAdhesionPost = [
     }
 
     await db.updateUserMembership(req.user.username);
-    res.render("secret_club");
+    res.redirect("/");
   }),
 ];
 
