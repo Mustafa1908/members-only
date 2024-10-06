@@ -12,9 +12,13 @@
       <a href="/" class="navTitle">Members-Only</a>
       <div class="linkContainer">
         <span class="usernameText">Hey <%= user.username %>!</span>
-        <em><a href="/log_in" class="navAnchor">Join The Club</a></em>
-        <em><a href="/log_in" class="navAnchor">Become An Admin</a></em>
-        <a href="/log_in" class="navAnchor">Log Out</a>
+        <em
+          ><a href="/secret_club_adhesion" class="navAnchor"
+            >Join The Club</a
+          ></em
+        >
+        <em><a href="/admin_adhesion" class="navAnchor">Become An Admin</a></em>
+        <a href="/log_out" class="navAnchor">Log Out</a>
       </div>
     </nav>
     <% } %> <% if(locals.user && locals.user.admin_status === true) {%>
@@ -22,7 +26,7 @@
       <a href="/" class="navTitle">Members-Only</a>
       <div class="linkContainer">
         <span class="usernameText">Hey <%= user.username %>!</span>
-        <a href="/log_in" class="navAnchor">Log Out</a>
+        <a href="/log_out" class="navAnchor">Log Out</a>
       </div>
     </nav>
     <% } else if(locals.user && locals.user.membership_status === true) {%>
@@ -30,8 +34,8 @@
       <a href="/" class="navTitle">Members-Only</a>
       <div class="linkContainer">
         <span class="usernameText">Hey <%= user.username %>!</span>
-        <em><a href="/sign_up" class="navAnchor">Become An Admin</a></em>
-        <a href="/log_in" class="navAnchor">Log Out</a>
+        <em><a href="/admin_adhesion" class="navAnchor">Become An Admin</a></em>
+        <a href="/log_out" class="navAnchor">Log Out</a>
       </div>
     </nav>
     <% } %> <% if (locals.user === undefined) {%>
