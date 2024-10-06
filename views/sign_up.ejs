@@ -2,29 +2,34 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title></title>
+    <link rel="stylesheet" href="/stylesheet/styles.css" />
+    <link rel="stylesheet" href="/stylesheet/navbar.css" />
+    <link rel="stylesheet" href="/stylesheet/log_in.css" />
+    <title>Sign Up</title>
   </head>
   <body>
-    <a href="/">Go to home page</a>
-    <h1>Sign Up</h1>
-    <form action="/sign_up" method="POST">
-      <%- include('partials/errors.ejs') %>
-      <label for="userName">Username</label>
-      <input id="userName" name="userName" placeholder="userName" type="text" />
-      <label for="firstName">First Name</label>
-      <input
-        id="firstName"
-        name="firstName"
-        placeholder="firstName"
-        type="text"
-      />
-      <label for="lastName">Last Name</label>
-      <input id="lastName" name="lastName" placeholder="lastName" type="text" />
-      <label for="password">Password</label>
-      <input id="password" name="password" type="password" />
-      <label for="confirmPassword">Confirm Password</label>
-      <input id="confirmPassword" name="confirmPassword" type="password" />
-      <button>Sign Up</button>
-    </form>
+    <%- include('partials/navbar.ejs') -%>
+    <main class="main">
+      <h1>Sign Up</h1>
+      <form action="/sign_up" class="form" method="POST">
+        <%- include('partials/errors.ejs') %>
+        <label for="userName" class="label">Username</label>
+        <input id="userName" name="userName" class="input" type="text" />
+        <label for="firstName">First Name</label>
+        <input id="firstName" name="firstName" type="text" class="input" />
+        <label for="lastName" class="label">Last Name</label>
+        <input id="lastName" name="lastName" type="text" class="input" />
+        <label for="password" class="label">Password</label>
+        <input id="password" name="password" type="password" class="input" />
+        <label for="confirmPassword" class="label">Confirm Password</label>
+        <input
+          id="confirmPassword"
+          name="confirmPassword"
+          type="password"
+          class="input"
+        />
+        <button class="signUpButton">Sign Up</button>
+      </form>
+    </main>
   </body>
 </html>
