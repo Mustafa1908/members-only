@@ -9,3 +9,19 @@ body {
   background-color: #e2e8f0;
   padding-bottom: 2rem;
 }
+
+.errorMessageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 89%;
+  padding-top: 1rem;
+  list-style-type: none;
+}
+
+.errorMessage {
+  color: #d11a2a;
+  font-size: var(--step--1);
+}
