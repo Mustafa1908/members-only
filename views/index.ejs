@@ -16,12 +16,23 @@
     <% if (locals.user && locals.user.membership_status === false) {%> <%-
     include('partials/navbar.ejs') -%> <% if (allMessages) {%>
     <main class="main">
-      <% for (let i = 0; i < allMessages.length; i++) { %>
-      <article>
-        <span><%= allMessages[i].message_title %></span>
-        <span><%= allMessages[i].message %></span>
-      </article>
-      <% } %> <% } %>
+      <div class="createMessageContainer">
+        <h3 class="messageHeader">
+          Inbox <span class="messageNumber"><%= allMessages.length %></span>
+        </h3>
+      </div>
+      <section class="allMessageContainer">
+        <% for (let i = 0; i < allMessages.length; i++) { %>
+        <article class="messageContainer">
+          <div class="titleUsernameContainer">
+            <span class="messageTitle"
+              ><%= allMessages[i].message_title %></span
+            >
+          </div>
+          <span class="userMessage"><%= allMessages[i].message %></span>
+        </article>
+        <% } %> <% } %>
+      </section>
     </main>
     <% } %> <% if(locals.user && locals.user.admin_status === true) {%> <%-
     include('partials/navbar.ejs') -%> <% if (allMessages) {%>
@@ -58,22 +69,46 @@
       </section>
     </main>
     <% } else if(locals.user && locals.user.membership_status === true) {%> <%-
-    include('partials/navbar.ejs') -%> <% if (allMessages) {%> <% for (let i =
-    0; i < allMessages.length; i++) { %>
-    <article>
-      <span><%= allMessages[i].message_title %></span>
-      <span><%= allMessages[i].message %></span>
-      <span><%= allMessages[i].username %></span>
-      <span><%= allMessages[i].time %></span>
-    </article>
-    <% } %> <% } %> <% } %> <% if (locals.user === undefined) {%> <%-
     include('partials/navbar.ejs') -%> <% if (allMessages) {%>
     <main class="main">
-      <section class="section">
+      <div class="createMessageContainer">
+        <h3 class="messageHeader">
+          Inbox <span class="messageNumber"><%= allMessages.length %></span>
+        </h3>
+        <a href="/new_message" class="createMessageButton">Create Message</a>
+      </div>
+      <section class="allMessageContainer">
         <% for (let i = 0; i < allMessages.length; i++) { %>
-        <article>
-          <span><%= allMessages[i].message_title %></span>
-          <span><%= allMessages[i].message %></span>
+        <article class="messageContainer">
+          <div class="titleUsernameContainer">
+            <span class="messageTitle"
+              ><%= allMessages[i].message_title %></span
+            >
+            <span>By @<%= allMessages[i].username %></span>
+          </div>
+          <span class="userMessage"><%= allMessages[i].message %></span>
+          <span>On <%= allMessages[i].time %></span>
+        </article>
+        <% } %> <% } %>
+      </section>
+    </main>
+    <% } %> <% if (locals.user === undefined) {%> <%-
+    include('partials/navbar.ejs') -%> <% if (allMessages) {%>
+    <main class="main">
+      <div class="createMessageContainer">
+        <h3 class="messageHeader">
+          Inbox <span class="messageNumber"><%= allMessages.length %></span>
+        </h3>
+      </div>
+      <section class="allMessageContainer">
+        <% for (let i = 0; i < allMessages.length; i++) { %>
+        <article class="messageContainer">
+          <div class="titleUsernameContainer">
+            <span class="messageTitle"
+              ><%= allMessages[i].message_title %></span
+            >
+          </div>
+          <span class="userMessage"><%= allMessages[i].message %></span>
         </article>
         <% } %> <% } %>
       </section>
