@@ -16,14 +16,14 @@ let getNewMessagePageGet = async (req, res) => {
 };
 
 let addNewMessagePost = [
-  body("message_title")
+  body("messageTitle")
     .trim()
     .isLength({ min: 5, max: 100 })
-    .withMessage(`User name must be between 5 and 100 characters`),
+    .withMessage(`Message Title must be between 5 and 100 characters`),
   body("message")
     .trim()
     .isLength({ min: 20, max: 1000 })
-    .withMessage(`First name must be between 20 and 1000 characters`),
+    .withMessage(`Message must be between 20 and 1000 characters`),
   asyncHandler(async (req, res, next) => {
     let messageDate = new Date();
 
