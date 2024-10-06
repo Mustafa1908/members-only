@@ -3,23 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="stylesheet/errors.css" />
-    <link rel="stylesheet" href="stylesheet/navbar.css" />
-    <link rel="stylesheet" href="stylesheet/log_in.css" />
-    <title>Secret Club Adhesion</title>
+    <link rel="stylesheet" href="/stylesheet/styles.css" />
+    <link rel="stylesheet" href="/stylesheet/navbar.css" />
+    <link rel="stylesheet" href="/stylesheet/log_in.css" />
+    <title>Admin Adhesion</title>
   </head>
   <body>
     <%- include('partials/navbar.ejs') -%>
     <main class="main">
       <h1 class="secretCodeHeader">
-        Enter the secret code 30 to join the club
+        Enter the secret code 1908 to join the club
       </h1>
-      <form action="/secret_club_adhesion" method="POST" class="form">
+      <form action="/admin_adhesion" method="POST" class="form">
         <%- include('partials/errors.ejs') -%>
-        <label for="secretCode" class="label">Secret code:</label>
+        <label for="adminSecretCode" class="label"
+          >Enther the secret code</label
+        >
         <input
-          id="secretCode"
-          name="secretCode"
+          id="adminSecretCode"
+          name="adminSecretCode"
           type="password"
           class="input"
         />
