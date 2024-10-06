@@ -23,6 +23,7 @@
   margin-top: 1rem;
   padding-left: 2rem;
   padding-top: 2rem;
+  padding-bottom: 2rem;
   width: 40%;
 }
 
@@ -47,7 +48,8 @@
   font-size: var(--step-0);
 }
 
-.loginButton {
+.loginButton,
+.signUpButton {
   font-size: var(--step-0);
   text-decoration: none;
   background-color: #3b82f6;
