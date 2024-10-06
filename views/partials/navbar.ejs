@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheet/navbar.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <% if (locals.user && locals.user.membership_status === false) {%>
+    <nav class="navbar">
+      <a href="/" class="navTitle">Members-Only</a>
+      <div class="linkContainer">
+        <span class="usernameText">Hey <%= user.username %>!</span>
+        <em><a href="/log_in" class="navAnchor">Join The Club</a></em>
+        <em><a href="/log_in" class="navAnchor">Become An Admin</a></em>
+        <a href="/log_in" class="navAnchor">Log Out</a>
+      </div>
+    </nav>
+    <% } %> <% if(locals.user && locals.user.admin_status === true) {%>
+    <nav class="navbar">
+      <a href="/" class="navTitle">Members-Only</a>
+      <div class="linkContainer">
+        <span class="usernameText">Hey <%= user.username %>!</span>
+        <a href="/log_in" class="navAnchor">Log Out</a>
+      </div>
+    </nav>
+    <% } else if(locals.user && locals.user.membership_status === true) {%>
+    <nav class="navbar">
+      <a href="/" class="navTitle">Members-Only</a>
+      <div class="linkContainer">
+        <span class="usernameText">Hey <%= user.username %>!</span>
+        <em><a href="/sign_up" class="navAnchor">Become An Admin</a></em>
+        <a href="/log_in" class="navAnchor">Log Out</a>
+      </div>
+    </nav>
+    <% } %> <% if (locals.user === undefined) {%>
+    <nav class="navbar">
+      <a href="/" class="navTitle">Members-Only</a>
+      <div class="linkContainer">
+        <a href="/log_in" class="navAnchor">Log in</a>
+        <a href="/sign_up" class="navAnchor">Sign up</a>
+      </div>
+    </nav>
+    <% }%>
+  </body>
+</html>
