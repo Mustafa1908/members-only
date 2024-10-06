@@ -3,24 +3,81 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link rel="stylesheet" href="/stylesheet/styles.css" />
+    <link rel="stylesheet" href="/stylesheet/index.css" />
+    <link rel="stylesheet" href="/stylesheet/navbar.css" />
     <title>Home Page</title>
   </head>
   <body>
-    <% if (locals.user) {%>
-    <h1>WELCOME BACK <%= user.username %></h1>
-    <a href="/secret_club_adhesion">Join the club</a>
-    <a href="/new_message">New Message</a>
-    <a href="/log_out">LOG OUT</a>
-    <% } %> <% if(locals.user && locals.user.membership_status === true) {%> <%
-    if (allMessages) {%> <% for (let i = 0; i < allMessages.length; i++) { %>
+    <% if (locals.user && locals.user.membership_status === false) {%> <%-
+    include('partials/navbar.ejs') -%> <% if (allMessages) {%>
+    <main class="main">
+      <% for (let i = 0; i < allMessages.length; i++) { %>
+      <article>
+        <span><%= allMessages[i].message_title %></span>
+        <span><%= allMessages[i].message %></span>
+      </article>
+      <% } %> <% } %>
+    </main>
+    <% } %> <% if(locals.user && locals.user.admin_status === true) {%> <%-
+    include('partials/navbar.ejs') -%> <% if (allMessages) {%>
+    <main class="main">
+      <div class="createMessageContainer">
+        <h3 class="messageHeader">
+          Inbox <span class="messageNumber"><%= allMessages.length %></span>
+        </h3>
+        <a href="/new_message" class="createMessageButton">Create Message</a>
+      </div>
+      <section class="allMessageContainer">
+        <% for (let i = 0; i < allMessages.length; i++) { %>
+        <article class="messageContainer">
+          <div class="titleUsernameContainer">
+            <span class="messageTitle"
+              ><%= allMessages[i].message_title %></span
+            >
+            <span>By @<%= allMessages[i].username %></span>
+          </div>
+          <span class="userMessage"><%= allMessages[i].message %></span>
+          <span>On <%= allMessages[i].time %></span>
+          <form action="" class="form" method="post">
+            <span>Delete Message</span>
+            <button
+              value="<%= allMessages[i].message_title %>"
+              name="messageTitle"
+              class="material-symbols-outlined deleteButton"
+            >
+              delete
+            </button>
+          </form>
+        </article>
+        <% } %> <% } %>
+      </section>
+    </main>
+    <% } else if(locals.user && locals.user.membership_status === true) {%> <%-
+    include('partials/navbar.ejs') -%> <% if (allMessages) {%> <% for (let i =
+    0; i < allMessages.length; i++) { %>
     <article>
+      <span><%= allMessages[i].message_title %></span>
+      <span><%= allMessages[i].message %></span>
       <span><%= allMessages[i].username %></span>
       <span><%= allMessages[i].time %></span>
     </article>
-    <% } %> <% } %> <% } else {%>
-    <a href="/sign_up">Sign up</a>
-    <a href="/secret_club_adhesion">Join the club</a>
-    <a href="/log_in">Log in</a>
-    <%}%>
+    <% } %> <% } %> <% } %> <% if (locals.user === undefined) {%> <%-
+    include('partials/navbar.ejs') -%> <% if (allMessages) {%>
+    <main class="main">
+      <section class="section">
+        <% for (let i = 0; i < allMessages.length; i++) { %>
+        <article>
+          <span><%= allMessages[i].message_title %></span>
+          <span><%= allMessages[i].message %></span>
+        </article>
+        <% } %> <% } %>
+      </section>
+    </main>
+    <% }%>
   </body>
 </html>
