@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheet/styles.css" />
+    <link rel="stylesheet" href="/stylesheet/navbar.css" />
+    <link rel="stylesheet" href="/stylesheet/log_in.css" />
+    <title>Create Message</title>
+  </head>
+  <body>
+    <%- include('partials/navbar.ejs') -%>
+    <main class="main">
+      <h1>Create Message</h1>
+      <form action="/new_message" method="POST" class="form">
+        <%- include('partials/errors.ejs') -%>
+        <label for="messageTitle" class="label">Message Title</label>
+        <input
+          id="messageTitle"
+          name="messageTitle"
+          type="text"
+          class="input"
+          required
+        />
+        <label for="message" class="label">Message: </label>
+        <textarea
+          name="message"
+          id="message"
+          class="messageTextArea"
+          required
+        ></textarea>
+        <button class="createMessageButton">Create</button>
+      </form>
+    </main>
+  </body>
+</html>
