@@ -48,8 +48,19 @@
   font-size: var(--step-0);
 }
 
+.messageTextArea {
+  width: 100%;
+  border-radius: 0.2rem;
+  min-height: 2.5rem;
+  min-height: 18rem;
+  border-color: 1px solid rgba(255, 25, 255, 0.2);
+  padding-left: 0.1rem;
+  font-size: var(--step-0);
+}
+
 .loginButton,
-.signUpButton {
+.signUpButton,
+.createMessageButton {
   font-size: var(--step-0);
   text-decoration: none;
   background-color: #3b82f6;
@@ -64,7 +75,15 @@
   margin-left: auto;
 }
 
-.loginButton:hover {
+.loginButton:hover,
+.signUpButton:hover,
+.createMessageButton:hover {
   cursor: pointer;
   opacity: 0.8;
+}
+
+@media (max-width: 1076px) {
+  .main {
+    width: 85%;
+  }
 }
