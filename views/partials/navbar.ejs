@@ -23,6 +23,19 @@
         <a href="/log_out" class="navAnchor"><strong>Log Out</strong></a>
       </div>
     </nav>
+    <nav class="secondNavBar">
+      <a href="/" class="navTitle">Members-Only</a>
+      <span class="usernameText">Hey <%= user.username %>!</span>
+      <em
+        ><a href="/secret_club_adhesion" class="navAnchor"
+          ><strong>Join The Club</strong></a
+        ></em
+      >
+      <a href="/admin_adhesion" class="navAnchor"
+        ><strong>Become An Admin</strong></a
+      >
+      <a href="/log_out" class="navAnchor"><strong>Log Out</strong></a>
+    </nav>
     <% } %> <% if(locals.user && locals.user.admin_status === true) {%>
     <nav class="navbar">
       <a href="/" class="navTitle">Members-Only</a>
@@ -30,6 +43,11 @@
         <span class="usernameText">Hey <%= user.username %>!</span>
         <a href="/log_out" class="navAnchor">Log Out</a>
       </div>
+    </nav>
+    <nav class="secondNavBar">
+      <a href="/" class="navTitle">Members-Only</a>
+      <span class="usernameText">Hey <%= user.username %>!</span>
+      <a href="/log_out" class="navAnchor">Log Out</a>
     </nav>
     <% } else if(locals.user && locals.user.membership_status === true) {%>
     <nav class="navbar">
@@ -42,6 +60,14 @@
         <a href="/log_out" class="navAnchor">Log Out</a>
       </div>
     </nav>
+    <nav class="secondNavBar">
+      <a href="/" class="navTitle">Members-Only</a>
+      <span class="usernameText">Hey <%= user.username %>!</span>
+      <a href="/admin_adhesion" class="navAnchor"
+        ><strong>Become An Admin</strong></a
+      >
+      <a href="/log_out" class="navAnchor">Log Out</a>
+    </nav>
     <% } %> <% if (locals.user === undefined) {%>
     <nav class="navbar">
       <a href="/" class="navTitle">Members-Only</a>
@@ -49,6 +75,11 @@
         <a href="/log_in" class="navAnchor">Log in</a>
         <a href="/sign_up" class="navAnchor">Sign up</a>
       </div>
+    </nav>
+    <nav class="secondNavBar">
+      <a href="/" class="navTitle">Members-Only</a>
+      <a href="/log_in" class="navAnchor">Log in</a>
+      <a href="/sign_up" class="navAnchor">Sign up</a>
     </nav>
     <% }%>
   </body>
