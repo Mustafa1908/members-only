@@ -6,6 +6,11 @@
     <link rel="stylesheet" href="/stylesheet/styles.css" />
     <link rel="stylesheet" href="/stylesheet/navbar.css" />
     <link rel="stylesheet" href="/stylesheet/log_in.css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="https://images.emojiterra.com/google/noto-emoji/unicode-15/color/512px/1f575.png"
+    />
     <title>Create Message</title>
   </head>
   <body>
@@ -13,7 +18,21 @@
     <main class="main">
       <h1>Create Message</h1>
       <form action="/new_message" method="POST" class="form">
-        <%- include('partials/errors.ejs') -%>
+        <%- include('partials/errors.ejs') -%> <% if (userMessage) { %>
+        <label for="messageTitle" class="label">Message Title</label>
+        <input
+          id="messageTitle"
+          name="messageTitle"
+          type="text"
+          class="input"
+          value="<%= userMessage.messageTitle %>"
+          required
+        />
+        <label for="message" class="label">Message: </label>
+        <textarea name="message" id="message" class="messageTextArea" required>
+<%= userMessage.message %></textarea
+        >
+        <% } else { %>
         <label for="messageTitle" class="label">Message Title</label>
         <input
           id="messageTitle"
@@ -29,6 +48,7 @@
           class="messageTextArea"
           required
         ></textarea>
+        <% } %>
         <button class="createMessageButton">Create</button>
       </form>
     </main>
