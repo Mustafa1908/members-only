@@ -17,13 +17,39 @@
     <main class="main">
       <h1>Sign Up</h1>
       <form action="/sign_up" class="form" method="POST">
-        <%- include('partials/errors.ejs') %>
+        <%- include('partials/errors.ejs') %> <% if(signupInformations) { %>
+        <label for="userName" class="label">Username</label>
+        <input
+          id="userName"
+          name="userName"
+          class="input"
+          type="text"
+          value="<%= signupInformations.userName %>"
+        />
+        <label for="firstName">First Name</label>
+        <input
+          id="firstName"
+          name="firstName"
+          type="text"
+          class="input"
+          value="<%= signupInformations.firstName %>"
+        />
+        <label for="lastName" class="label">Last Name</label>
+        <input
+          id="lastName"
+          name="lastName"
+          type="text"
+          class="input"
+          value="<%= signupInformations.lastName %>"
+        />
+        <% } else { %>
         <label for="userName" class="label">Username</label>
         <input id="userName" name="userName" class="input" type="text" />
         <label for="firstName">First Name</label>
         <input id="firstName" name="firstName" type="text" class="input" />
         <label for="lastName" class="label">Last Name</label>
         <input id="lastName" name="lastName" type="text" class="input" />
+        <% } %>
         <label for="password" class="label">Password</label>
         <input id="password" name="password" type="password" class="input" />
         <label for="confirmPassword" class="label">Confirm Password</label>
