@@ -1,3 +1,4 @@
+const { sign } = require("crypto");
 const db = require("../db/queries");
 const bcrypt = require("bcryptjs");
 const asyncHandler = require("express-async-handler");
@@ -5,14 +6,14 @@ const { body, validationResult } = require("express-validator");
 const passport = require("passport");
 
 let getSignUpPageGet = async (req, res) => {
-  res.render("sign_up");
+  res.render("sign_up", { signupInformations: "" });
 };
 
 let signUpPost = [
   body("userName")
     .trim()
-    .isLength({ min: 1, max: 100 })
-    .withMessage(`User name must be between 1 and 100 characters`),
+    .isLength({ min: 1, max: 30 })
+    .withMessage(`User name must be between 1 and 30 characters`),
   body("firstName")
     .trim()
     .isLength({ min: 1, max: 100 })
@@ -33,6 +34,7 @@ let signUpPost = [
       console.log(errors.array());
       return res.status(400).render("sign_up", {
         errors: errors.array(),
+        signupInformations: req.body,
       });
     }
 
