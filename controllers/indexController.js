@@ -12,7 +12,9 @@ let getNewMessagePageGet = async (req, res) => {
     res.redirect("/");
     return;
   }
-  res.render("new_message");
+  res.render("new_message", {
+    userMessage: "",
+  });
 };
 
 let addNewMessagePost = [
@@ -32,6 +34,7 @@ let addNewMessagePost = [
       console.log(errors.array());
       return res.status(400).render("new_message", {
         errors: errors.array(),
+        userMessage: req.body,
       });
     }
 
