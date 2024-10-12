@@ -6,6 +6,7 @@ A fullstack website where you can create an account and post and see messages, y
   <li>Create an account</li>
   <li>Log in</li>
   <li>Log out</li>
+  <li>Create Messages</li>
   <li>Join the secret club (people in the secret club can create message)</li>
   <li>Become an admin (people who are admin can delete message)</li>
   <li>Hash the password so that it is hidden in the database</li>
