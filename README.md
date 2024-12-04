@@ -17,5 +17,7 @@ A fullstack website where you can create an account and post and see messages, y
   <li>Became better at using passport.js</li>
 </ul>
 <h2>More Projects</h2>
-<p>Here is a link to my previous project: <a href="https://github.com/Mustafa1908/inventory-application">Shopping Cart</a></p>
+<p>Here is a link to my previous project: <a href="https://github.com/Mustafa1908/inventory-application">Inventory Application</a></p>
+<p>Here is a link to my next project: <a href="https://github.com/Mustafa1908/blog-api/tree/main
+">Blog Api</a></p>
 
